@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Tasks.ContinueWith;
 
 namespace Tasks
 {
@@ -16,7 +17,7 @@ namespace Tasks
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ContinueWith.ContinueWith());
+            Application.Run(new Closure());
         }
     }
 }
