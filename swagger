@@ -1,45 +1,62 @@
----
-swagger: '2.0'
+openapi: 3.0.0
 info:
   version: v1
   title: BullDog Public Global WebAPIs
-host: localhost
-schemes:
-- http
 paths:
   "/api/servicedetails/{systemGuid}/services/{serviceId}":
     get:
       tags:
-      - ServiceDetails
+        - ServiceDetails
       summary: Gets service details for a system related service
-      description: "\r\n<p><b>Authorization:</b>SystemPermissionBySystemType-ReadServiceUrls</p>\r\n<p><b>Action:</b>GetServiceDetails</p>"
+      description: "\r
+
+        
+Authorization:SystemPermissionBySystemType-ReadServic\
+        eUrls
+
+\r
+
+        
+Action:GetServiceDetails
+
+"
       operationId: ServiceDetails_GetServiceDetails
-      consumes: []
-      produces:
-      - application/json
-      - text/json
-      - application/xml
-      - text/xml
       parameters:
-      - name: systemGuid
-        in: path
-        required: true
-        type: string
-      - name: serviceId
-        in: path
-        required: true
-        type: string
-      responses:
-        '200':
-          description: OK
+        - name: systemGuid
+          in: path
+          required: true
           schema:
-            "$ref": "#/definitions/ServiceDetails"
+            type: string
+        - name: serviceId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceDetails"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/ServiceDetails"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/ServiceDetails"
+            text/xml:
+              schema:
+                $ref: "#/components/schemas/ServiceDetails"
       deprecated: false
-definitions:
-  ServiceDetails:
-    type: object
-    properties:
-      Url:
-        type: string
-      ActiveDirectoryResourceId:
-        type: string
+servers:
+  - url: http://localhost
+components:
+  schemas:
+    ServiceDetails:
+      type: object
+      properties:
+        Url:
+          type: string
+        ActiveDirectoryResourceId:
+          type: string
