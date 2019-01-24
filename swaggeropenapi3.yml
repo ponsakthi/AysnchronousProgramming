@@ -1,0 +1,62 @@
+openapi: 3.0.0
+info:
+  version: v1
+  title: BullDog Public Global WebAPIs
+paths:
+  "/api/servicedetails/{systemGuid}/services/{serviceId}":
+    get:
+      tags:
+        - ServiceDetails
+      summary: Gets service details for a system related service
+      description: "\r
+
+        
+Authorization:SystemPermissionBySystemType-ReadServic\
+        eUrls
+
+\r
+
+        
+Action:GetServiceDetails
+
+"
+      operationId: ServiceDetails_GetServiceDetails
+      parameters:
+        - name: systemGuid
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: serviceId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceDetails"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/ServiceDetails"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/ServiceDetails"
+            text/xml:
+              schema:
+                $ref: "#/components/schemas/ServiceDetails"
+      deprecated: false
+servers:
+  - url: http://localhost
+components:
+  schemas:
+    ServiceDetails:
+      type: object
+      properties:
+        Url:
+          type: string
+        ActiveDirectoryResourceId:
+          type: string
